@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Serie singola{% endblock %}
+{% block main %}
+<main>
+  {% if rif['autore'] == current_user.nome %}
+  <div class="pulsanti">
+    <form form action="{{ url_for('elimina_serie', id = rif['id'])}}" method="POST">
+    <button id='X' type="submit" class="btn btn-danger">X</button>
+    </form>
+    <button id='mod' type="button" class="btn btn-light"><a href="{{ url_for('cambiamento_serie', id = rif['id'])}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></a></button>
+  </div>
+  {% endif %}
+  <section class="singola">
+    <div>
+      <div class="lista_search">
+          <h2>{{ rif['titolo'] }}</h2>
+          <p>{{ rif['descrizione'] }}</p>
+          <p>Categoria: {{ rif['categoria']}}</p>
+          <p>Aggiunto il giorno:  {{ rif['data'] }} - {{rif['autore']}}</p>
+      </div>
+      <img class="foto_serie" src="static/{{rif['immagine']}}" alt="copertina del podcast">
+      {% if current_user.is_authenticated %}
+      <form id='aggiungi_preferiti' action="{{url_for('segui_serie', id = rif['id'])}}", method="POST">
+        <button class="btn btn-info" id="aggiungi_preferiti" type="submit">Segui serie!</button>
+      </form>
+      {% endif %}
+    </div>
+        {%for p in podcast_trovati%} 
+          {%if p.serie_titolo == rif.id %} 
+            <hr>
+            <ul id="episodio{{p.id}}">
+              <li><a class="item_titoli" id='p' href="{{url_for('singolo', id=p.id)}}">{{p.titolo}}</a><h5 class="item_search">- {{p.data}}</h5></li>
+              <li class="item_descrizione" id="p_descr">{{ p.descrizione }}</li>
+              <h8 id="nascosto" class="idpod">{{p['id']}}</h8>
+              {% if current_user.is_authenticated %}
+              <audio controls class="audio">
+                <source src="static/{{p['audio']}}" type="audio/mpeg">
+              </audio>
+              {% else %}
+              <audio controls class="audio">
+                <source src="#" type="audio/mpeg">
+              </audio>
+              {% endif %}
+            </ul>
+          {%endif%} 
+        {%endfor%} 
+      <hr>
+      <hr>
+      <p class="commenti_p" >Entra nel podcast per commentare anche tu!!</p>
+  </section>
+</main>
+{% endblock %}
+{% block aside %}
+<aside class="sinistra">
+  <hr>
+  <div class="div_ricerca">
+    <label for="search_input">Cerca un podcast</label>
+    <input type="search" class="input_search" id="search_input" placeholder="Search here ...">
+    <button type="button" class="button_search" id="invia" class="btn btn-info">CERCA</button>
+  </div>
+  <hr>
+  
+  <h4>FILTRA</h3>
+  <hr></hr>
+  <h6> filtra per CATEGORIA :</h5>
+  <ul>
+    <li><a href="{{ url_for('categoria', k='Fantasy')}}" data-tag="Fantasy">Fantasy</a></li>
+    <li><a href="{{ url_for('categoria', k='Tecnologia')}}" data-tag="Tecnologia">Tecnologia</a></li>
+    <li><a href="{{ url_for('categoria', k='Attualità')}}" data-tag="Attualità">Attualit&agrave;</a></li>
+    <li><a href="{{ url_for('categoria', k='Storia')}}" data-tag="Storia">Storia</a></li>
+    <hr></hr>
+    <button><a href="{{url_for('serie')}}">Elimina filtri</a></button>
+    <hr>
+    <h4> NAVIGA: </h4>   
+    <hr>
+    {%for s in serie_trovate%} 
+    <section> 
+        <h6><a href="{{url_for('serie_singola', id=s.id)}}">{{s.titolo}}</a></h6> 
+        <ul> 
+            {%for p in podcast_trovati%} 
+                {%if p.serie_titolo == s.id%} 
+                <li><a href="{{url_for('singolo', id=p.id)}}">{{p.titolo}}</a></li> 
+                {%endif%} 
+            {%endfor%} 
+        </ul> 
+    </section> 
+    <hr>
+    {%endfor%} 
+</aside>
+{% endblock %}

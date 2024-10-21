@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Modifica serie{% endblock %}
+{% block main %}
+
+<form action="{{ url_for('cambiamento_serie', id = id)}}" method="POST" id='cambiamenti' class="login_form", enctype="multipart/form-data">
+    <hr>
+    <div class="email">
+        <label for="nuovo_titolo">Titolo precedente: {{ rif['titolo'] }}</label>
+        <input name="nuovo_titolo" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nuovo titolo della serie", minlength="2", maxlength="20">
+    </div>
+    <div class="email">
+        <label for="nuova_descrizione">Descrizione precedente: {{ rif['descrizione']  }}</label>
+        <textarea class="form-control" name="nuova_descrizione"  placeholder="Inserisci una nuova descrizione o lasciare vuoto per tenere la descrizione precedente" rows="5", minlength="10"></textarea>
+    </div>
+    <div class="data">
+        <label for="nuova_data" class="form-label">Data precedente: {{ rif['data'] }}</label>
+        <input type="date" class="form-control" name="nuova_data" aria-describedby="Data dell'articolo", value="YYYY-MM-DD">
+    </div>
+    <div class="email">
+        <label for="nuova_immagine" class="form-label">Scegli un'immagine nuova per la serie:</label>
+        <input name="nuova_immagine" class="form-control" type="file" id="formFile", accept=".jpg, .jpeg, .png">
+    </div>
+    <div class="robot">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1", required>
+      <label class="form-check-label" for="exampleCheck1">Accetto i termini e le condizioni.</label>
+    </div>
+    <button id="login_bottone" type="submit" class="btn btn-primary" value="Send data">Inserisci</button>
+</form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Registrazione{% endblock %}
+{% block main %}
+<form action="/registrazione" method="POST" class="login_form" id="registrazione_utente", enctype="multipart/form-data">
+    <hr>
+    <p class="email">Tipo di registrazione:</p>
+    <div class="scelta_registrazione">
+        <input class="form-check-input" type="radio" name="codice" value='Ascoltatore' id="flexRadioDefault1" checked>
+        <label class="form-check-label" for="codice">Ascoltatore</label>
+    </div>
+    <div class="scelta_registrazione">
+        <input class="form-check-input" type="radio" name="codice" value='Creatore' id="flexRadioDefault2" >
+        <label class="form-check-label" for="codice">Creatore</label>
+    </div>
+    <div class="email">
+        <label for="nome">Nome</label>
+        <input name="nome" type="text" class="form-control" id="nome_registrazione" aria-describedby="emailHelp" placeholder="Nome", required, minlength="2">
+    </div>
+    <div class="email">
+        <label for="cognome">Cognome</label>
+        <input name="cognome" type="text" class="form-control" id="cognome_registrazione" aria-describedby="emailHelp" placeholder="Cognome", required, minlength="2">
+    </div>
+    <div class="email">
+      <label for="email">Indirizzo Email</label>
+      <input name="email" type="email" class="form-control" id="email_registrazione" aria-describedby="emailHelp" placeholder="Inserisci la tua mail", required, minlength="2">
+      <small id="emailHelp" class="form-text text-muted">Non condivederemo mai i tuoi dati altrove.</small>
+    </div>
+    <div class="password">
+      <label for="password">Password</label>
+      <input name="password" type="password" class="form-control" placeholder="Inserisci la password", required, minlength="8", maxlength="20">
+    </div>
+    <div class="email">
+        <label for="foto" class="form-label">Scegli un'immagine profilo</label>
+        <input name="foto" class="form-control" type="file" id="foto_registrazione", accept=".jpg, .jpeg, .png">
+    </div>
+    <div class="link">
+        <a>Sei gi&agrave; registrato??     </a><a  href="{{ url_for('login')}}">Login</a></li>
+    </div>
+    <div class="robot">
+      <input name="termini" type="checkbox" class="form-check-input" id="termini", required>
+      <label class="form-check-label" for="termini">Accetto i termini e le condizioni.</label>
+    </div>
+    <button id="login_bottone" type="submit" class="btn btn-primary">Registrati</button>
+</form>
+{% endblock %}

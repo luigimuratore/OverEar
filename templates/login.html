@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block main %}
+<form action="/login" method="POST" class="login_form">
+    <div class="email">
+      <label for="email">Indirizzo Email</label>
+      <input name='email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci la tua mail", required, minlength="2">
+      <small id="emailHelp" class="form-text text-muted">Non condivederemo mai i tuoi dati altrove.</small>
+    </div>
+    <div class="password">
+      <label for="password">Password</label>
+      <input name='password' type="password" class="form-control" aria-describedby="Password dell'utente" id="exampleInputPassword1" placeholder="Inserisci la password", required, minlength="1">
+    </div>
+    <div class="link">
+        <a>Non sei ancora registrato??     </a><a  href="{{ url_for ('registrazione')}}">Registrati</a></li>
+    </div>
+    <div class="robot">
+      <input name='robot' type="checkbox" class="form-check-input" id="exampleCheck1" required>
+      <label class="form-check-label" for="exampleCheck1">Non sono un robot!</label>
+    </div>
+    <button id="login_bottone" type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}

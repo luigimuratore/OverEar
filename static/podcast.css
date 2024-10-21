@@ -1,0 +1,652 @@
+.logo {
+    width: 5%;
+}
+
+.bg {
+    background-color: rgba(175, 116, 70, 0.384);
+    z-index: -5;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.nav-item {
+    margin-left: 4rem;
+}
+
+.login {
+    float: right;
+    padding-right: 2%;
+}
+
+.scelta:hover{
+    background-color: rgb(233, 233, 171);
+}
+
+.menu {
+    display: inline;
+}
+
+.scelta {
+    margin: 2rem 2rem;
+    font-size: 120%;
+    padding: 0.6rem;
+    text-decoration: none;
+}
+
+
+main {
+    float: left;
+    margin-top: 3.5vw;
+    margin-bottom: 5%;
+    margin-left: 1%;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.about {
+    margin-top: 8.5vw;
+    margin-left: 1vw;
+}
+
+.about > p {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 1.5vw;
+    margin-top: 1.5vw;
+}
+
+.about > strong {
+    font-size: 2vw;
+}
+
+.about > h2 {
+    font-size: 2.5vw;
+}
+
+.mappa {
+    width: 50%;
+    margin-left: 10vw;
+    margin-top: 3vw;
+}
+
+.logo_bozza {
+    width: 30%;
+    margin-left: 4vw;
+    margin-top: 2vw;
+}
+
+.episodio {
+    margin-top: 8vw;
+    margin-left: 25vw;
+}
+
+.titolo_podcast {
+    text-decoration: none;
+}
+
+.generi {
+    margin-top: 8.5vw;
+    margin-left: 1vw;
+}
+
+.autori {
+    margin-top: 8.5vw;
+    margin-left: 2vw;
+}
+
+.autori > ul {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    font-size: 1.5vw;
+}
+
+.autori > strong {
+    font-size: 1.7vw;
+}
+
+
+.bottoni_genere > button {
+    width: 20vw;
+    height: 5vw;
+    margin: 1.6vw;
+    margin-bottom: 2vw;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+.bottoni_genere > button > a {
+    text-decoration: none;
+    color: blue;
+}
+
+
+.generi > strong {
+    font-size: 1.3vw;
+}
+
+.login > button > a {
+    text-decoration: none;
+    color: blueviolet;
+}
+main > .home {
+    margin: 5%;
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 56.4%;
+    padding: 3% 3.5%;
+    padding-right: 10%;
+    border-style: outset;
+    border-color: darkgray;
+    background-color: rgba(184, 186, 177, 0.381);
+    font-size: 1.1vw;
+}
+
+.serie_singola {
+    margin: 5%;
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 70%;
+    padding: 3% 3.5%;
+    padding-right: 10%;
+    border-style: outset;
+    border-color: darkgray;
+    background-color: rgba(184, 186, 177, 0.381);
+    font-size: 1.1vw;
+}
+
+.singola {
+    margin-top: 7vw;
+    width: 60vw;
+    margin-left: 25vw;
+}
+
+.lista_serie {
+    margin-left: 22vw;
+    width: 67vw;
+}
+
+main section {
+    margin: 5%;
+    margin-left: 10vw;
+    margin-right: 5vw;
+    width: 65%;
+    padding: 3% 3.5%;
+    padding-right: 10%;
+    border-style: outset;
+    border-color: darkgray;
+    background-color: rgba(184, 186, 177, 0.381);
+    font-size: 1.1vw;
+}
+
+main section > div {
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    grid-template-rows: 1fr;
+
+}
+
+
+main section h2, main section h3 {
+    font-style: italic;
+    font-weight: bold;
+}
+
+main section h3 a {
+    text-decoration: none;
+}
+
+.single {
+    text-decoration: none;
+}
+
+.ep {
+    display: block ;
+}
+
+.ep > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+}
+
+.ep div li {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+
+.ep div audio {
+    grid-column: 2;
+    grid-row: 1;
+
+}
+
+main section p {
+    margin-top: 4%;
+    margin-bottom: 3%;
+}
+
+main section a {
+    font-style: oblique;
+}
+
+main section > div > div {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+main section ul li {
+    margin-top: 1.5vw;
+    margin-bottom: 4%;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+main section > ul {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-template-rows: 1fr;
+}
+
+.audio {
+    margin-top: 4%;
+    height: 3vw;
+    width: 21vw;
+}
+
+.foto {
+    grid-column: 2;
+    grid-row: 1;
+    height: 95%;
+    width: 95%;
+    margin-top: 0vw;
+    margin-left: 20%;
+    border-radius: 20%;
+    
+}
+
+.foto_serie {
+    grid-column: 2;
+    grid-row: 1;
+    height: 10vw;
+    width: 15vw;
+    margin-top: 10%;
+    margin-left: 20%;
+    border-radius: 20%;
+}
+
+#aggiungi_preferiti {
+    grid-column: 2;
+    grid-row: 1;
+    height: 2%;
+    width: 90%;
+    margin-top: 8vw;
+    margin-left: 3vw;
+    border-radius: 10%;
+    padding-bottom: 1.9vw;
+}
+
+.commento {
+    display: block;
+}
+
+.commento > ul {
+    display: grid;
+    grid-template-columns: 1fr 10% 10%;
+    grid-template-rows: 3vw;
+}
+
+
+.commento ul li {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.commento > ul > #X {
+    grid-row: 1;
+    grid-column: 3;
+    width: 3vw;
+}
+
+.commento > ul > #mod {
+    grid-row: 1;
+    grid-column: 2;
+    width: 3vw;
+
+}
+
+#mod > a , #X > a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.pulsanti{
+    display: inline;
+    float: right;
+    height: 2vw;
+    width: 4vw;
+    margin-right: 0.1vw;
+    margin-top: 7vw;
+    margin-bottom: 4vw;
+
+}
+.pulsanti > button {
+    margin-top: 0.7vw;
+    width: 2.5vw;
+}
+
+.commenti > input {
+    width: 61%;   
+    display: inline;
+}
+
+.commenti > button {
+    display: inline;
+}
+
+.commenti_p {
+    margin-top: 4vw;
+
+}
+
+.commenti_episodi {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.6vw;
+}
+
+.scelta_registrazione {
+    padding-top: 2vw;
+    margin-left: 6vw;
+    display: inline;
+}
+
+
+.destra {
+    position: fixed;
+    margin-top: 11.5%;
+    margin-left: 78%;
+    padding: 2%;
+    border-style: ridge;
+    border-color: rgb(22, 7, 36);
+    background-color: rgba(248, 214, 89, 0.505);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2vw;
+}
+
+.destra a {
+    text-decoration: none;
+}
+
+.sinistra {
+    position: absolute;
+    margin-top: 11%;
+    margin-left: 1.5%;
+    padding: 1.1%;
+    border-style: ridge;
+    border-color: rgb(22, 7, 36);
+    background-color: rgba(248, 214, 89, 0.505);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 19vw;
+    font-size: 1.2vw;
+}
+
+.sinistra a {
+    text-decoration: none;
+}
+
+footer p {
+    display: inline;
+    font-size: 1.2vw;
+    border: 2%;
+    border-style: outset;
+    padding: 0.6vw;
+    margin: 0vw 6vw;
+}
+
+footer > a {
+    display: inline;
+    font-size: 2vw;
+    border: 1vw;
+    border-style: outset;
+    padding: 1vw;
+
+}
+
+
+footer {
+
+    clear: both;
+}
+
+footer > div {
+    margin-bottom: 2vw;
+}
+
+.logo_sotto {
+    width: 8vw;
+}
+
+a:link {
+    color: darkorange;
+}
+
+a:visited {
+    color: rgb(87, 123, 15);
+}
+
+a:active {
+    color: red;
+}
+
+.login_form {
+    margin-top: 10vw;
+    margin-left: 15vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-style: outset;
+    border-color: rgb(0, 0, 0);
+    padding-bottom: 2.5vw;
+    background-color: beige;
+
+}
+
+.email, .password, .robot, .link {
+    margin: 2vw 5vw;
+}
+
+#email {
+    width: 25.8vw;
+    margin-left: 4.8vw;
+
+}
+
+.data {
+    margin-top: 2vw;
+    margin-bottom: 1;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.select {
+    width: 25.8vw;
+    margin-left: 4.8vw;
+    margin-top: 1.8vw;
+
+}
+
+#login_bottone {
+    margin-left: 10vw;
+}
+
+#logout {
+    float: right;
+    margin-left: 2vw;
+}
+
+.profilo {
+    margin-top: 10vw;
+}
+
+.immagine_profilo {
+    margin-left: 7vw;
+    width: 50%;
+    border-radius: 50%;
+    grid-column: 1;
+    grid-row: 1;
+
+}
+
+.profilo > article {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    grid-row: 1fr;
+}
+
+.profilo > div {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.profilo > article > div > h2,h5 {
+    margin-bottom: 5vw;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 4vw;
+}
+
+.profilo > article > div > ul {
+    margin-bottom: 4vw;
+}
+
+.profilo > article > div > ul > li {
+    margin-bottom: 1.5vw;
+    font-size: 1.2vw;
+}
+
+.profilo > article > div > p {
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.preferiti {
+    margin: 5%;
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 50%;
+    padding: 3% 3.5%;
+    padding-right: 10%;
+    border-style: outset;
+    border-color: darkgray;
+    background-color: rgba(184, 186, 177, 0.381);
+}
+
+.preferiti > p {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.8vw;
+    margin-bottom: 2vw;
+}
+
+.preferiti > ul {
+    display: grid;
+    grid-template-columns: 90% 1fr;
+    grid-template-rows: 1fr;
+}
+
+.preferiti > ul > li {
+    margin-bottom: 1.5vw;
+    grid-row: 1;
+    grid-column: 1;
+    margin-top: 0.8vw;
+}
+
+
+.preferiti  button {
+    grid-row: 1;
+    grid-column: 2;
+    width: 3vw;
+    height: 3vw;
+}
+
+input:invalid {
+    border: 0.2vw dashed red;
+}
+
+
+#creazione a {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.spazio {
+    margin-top: 8vw;
+}
+
+.mod > #X {
+    float: right;
+    width: 2.7vw;
+    margin-left: 1.5vw;
+    margin-right: 12vw;
+    margin-top: 5.3vw;
+}
+
+.mod > #mod {
+    float: right;
+    width: 3vw;
+    margin-left: 10vw;
+    margin-top: 5.3vw;
+}
+
+.mod > #X > a, .mod > #mod > a  {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#p {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+
+
+.hide {
+    display: none !important;
+}
+
+#cambiamenti {
+    width: 70vw;
+}
+
+.cambiamento_commenti {
+    margin-top: 10vw;
+}
+
+#p_descr {
+    margin-top: 5vw;
+    font-family: monospace;
+}
+
+.notfound {
+    margin-top: 10vw;
+    margin-left: 3vw;
+    width: 84vw;
+}
+
+.nascosto, #nascosto {
+    display: none;
+}
+
+.serie_seguite_profilo {
+    text-decoration: none;
+    font-size: 2vw;
+    font-weight: bold;
+    font-style: italic;
+}

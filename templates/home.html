@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}OverEar{% endblock %}
+{% block main %}
+  <main>
+    {% for i in podcasts %}
+      <section class="home">
+          <div>
+          <div>
+              {% for s in series %}
+                {% if s['id'] == i['serie_titolo'] %}
+                  <h3><a class="titolo_podcast" href="{{ url_for ('singolo', id=i.id)}}" >{{ i['titolo'] }}</a> - <a href="{{ url_for ('serie', id=i.id)}}" >{{ s['titolo']}}</a></h3>
+                {% endif %}
+              {% endfor %}
+              <p>{{ i['descrizione'] }}</p>
+              <a>Aggiunto il giorno:  {{ i['data'] }}</a>
+              <a>- {{ i['autore'] }}</a>
+          </div>
+          {% for s in series %}
+            {% if s['id'] == i['serie_titolo'] %}
+              <img class="foto" src="static/{{s['immagine']}}" alt="copertina del podcast">
+            {% endif %}
+          {% endfor %}
+          </div>
+          <hr>
+          <ul>
+          <li>Episodio</li>
+          {% if current_user.is_authenticated %}
+          <audio controls class="audio">
+              <source src="static/{{i['audio']}}" type="audio/mpeg">
+          </audio>
+          {% endif %}
+          </ul>
+          <h5 class="commenti_episodi"><a href="{{ url_for ('singolo', id=i.id)}}"> Entra nel podcast</a> per commentare e visualizzare tutti i commenti!</h5>
+      </section>
+    {% endfor %}
+</main>
+{% endblock %}
+
+{% block aside %}
+    <aside class="destra">
+    <h4>Titoli del momento!!</h3>
+    <ul>
+      <li><a href="{{url_for('singolo', id=3)}}">IA - occhio alle spalle</a></li>
+      <li><a href="{{url_for('singolo', id=4)}}">3D printing</a></li>
+      <li><a href="{{url_for('serie_singola', id=1)}}">Ricette di ogni tipo</a></li>
+    </ul>
+    <hr></hr>
+    <h4>Coming soon!</h2>
+    <ul>
+      <li><a href="#ComingSoon">Viaggio dentro le aziende.</a></li>
+      <li><a href="#ComingSoon">Agricoltura su Marte!</a></li>
+    </ul>
+    <hr></hr>
+    </aside>
+    <aside class="sinistra">
+        <h4> NAVIGA: </h4>   
+        <hr>
+        {%for s in serie_trovate%} 
+        <section> 
+            <h6><a href="{{url_for('serie_singola', id=s.id)}}">{{s.titolo}}</a></h6> 
+            <ul> 
+                {%for p in podcast_trovati%} 
+                    {%if p.serie_titolo == s.id%} 
+                    <li><a href="{{url_for('singolo', id=p.id)}}">{{p.titolo}}</a></li> 
+                    {%endif%} 
+                {%endfor%} 
+            </ul> 
+        </section> 
+        <hr>
+        {%endfor%} 
+      </aside>
+{% endblock %}

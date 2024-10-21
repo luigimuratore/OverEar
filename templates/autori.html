@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Autori{% endblock %}
+{% block main %}
+<article class="autori">
+    <h3>Tutti gli autori e autrici che partecipano a OverEar:</h3>
+    {% for i in autori %}
+    <ul>
+        <li>{{ i['nome'] + ' ' + i['cognome'] }}</li>
+    </ul>
+    {% endfor %}
+    <strong><p>Grazie di cuore a tutti!!</p></strong>
+</article>
+{% endblock %}

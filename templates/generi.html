@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Generi{% endblock %}
+{% block main %}
+    <article class="generi">
+        <h2>Generi proposti:</h2>
+        <div class="bottoni_genere">
+            <button type="button" class="btn btn-outline-info btn-lg"><a href="{{ url_for('categoria', k='Fantasy')}}">Fantasy</a></button>
+            <button type="button" class="btn btn-outline-info btn-lg"><a href="{{ url_for('categoria', k='Tecnologia')}}">Tecnologia</a></button>
+            <button type="button" class="btn btn-outline-info btn-lg"><a href="{{ url_for('categoria', k='Attualità')}}">Attualit&agrave;</a></button>
+            <button type="button" class="btn btn-outline-info btn-lg"><a href="{{ url_for('categoria', k='Storia')}}">Storia</a></button>
+        </div>
+        <strong><p>Presto tantissimi altri generi...non perdeteveli!</p></strong>
+    </article>
+{% endblock %}

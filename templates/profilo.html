@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Profilo{% endblock %}
+{% block main %}
+<main class="profilo">
+    <article id="profilo">
+        {% if current_user.foto != current_user.nome + current_user.cognome %}
+            <img class="immagine_profilo" src="static/nofoto.jpeg" alt="immagine del profilo">
+        {% else %}
+            <img class="immagine_profilo" src="{{'static/' + current_user.nome + current_user.cognome + '.jpeg'}}" alt="immagine del profilo">
+        {% endif %}
+        <div>
+            <h2>{{ current_user.nome + ' ' + current_user.cognome}}</h2>
+            <ul>
+                <li>Email:  {{ current_user.email }}</li>
+                <li>Data di iscrizione:  {{ current_user.data }}</li>
+            </ul>
+            <p>Codice: {{ current_user.codice }} </p>
+        </div>
+    </article>
+    <div class="preferiti">
+        <p>Le serie che seguo: </p>
+        {% for i in serie_seguite %}
+            {% if current_user.nome == i.utente %}
+                <ul id="tabella_preferiti">
+                    <li><a class='serie_seguite_profilo' href="{{url_for('serie_singola', id = i.id)}}" >{{ i['titolo']}}</a></li>
+                    <form action="{{url_for('elimina_preferito', id = i.id)}}" method="POST">
+                        <button id='mod' type="submit" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.146 5.146a.5.5 0 0 1 .708 0L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 0 1 0-.708z"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/></svg></a></button>
+                    </form>
+                </ul>
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

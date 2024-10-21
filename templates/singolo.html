@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Episodio{{ episodio.id }}{% endblock %}
+{% block main %}
+{% block episodio %}
+<main>
+    {% if episodio['autore'] == current_user.nome %}
+    <div class="pulsanti">
+        <form action="{{ url_for('elimina_podcast', id = episodio['id'])}}" method="POST">
+            <button id='X' type="submit" class="btn btn-danger">X</button>
+        </form>
+        <button id='mod' type="button" class="btn btn-light"><a href="{{ url_for('cambiamento_podcast', id = episodio['id'])}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></a></button>
+    </div>
+    {% endif %}
+    <section class="singola">
+        <div>
+        <div>
+            <h2>{{ episodio['titolo'] }} - {{ serie['titolo']}}</h2>
+            <p>{{ episodio['descrizione'] }}</p>
+            <a>Aggiunto il giorno:  {{ episodio['data'] }}</a>
+            <a>- {{ episodio['autore']}}</a>
+        </div>
+            <img class="foto" src="static/{{serie['immagine']}}" alt="copertina della serie">
+        </div>
+        <hr>
+        <ul>
+        <li>Episodio</li>
+        {% if current_user.is_authenticated %}
+        <audio controls class="audio">
+            <source src="static/{{episodio['audio']}}" type="audio/mpeg">
+        </audio>
+        {% else %}
+              <audio controls class="audio">
+                <source src="#" type="audio/mpeg">
+              </audio>
+        {% endif %}
+        </ul>
+        
+
+            {% for commento in commenti %}
+                {% if commento['podcast_id'] == episodio['id'] %}
+                <div class="commento">
+                <ul>
+                    <li>{{ commento['contenuto'] }} - {{ commento['autore']}}</li>
+                    {% if current_user.is_authenticated %}
+                    {% if commento['autore'] == current_user.nome %}
+                        <form action="{{url_for('elimina_commento', id = commento.id)}}" method="POST">
+                            <button id='X' type="submit" class="btn btn-danger">X</button>
+                        </form>
+                        <button id='mod' type="button" class="btn btn-light"><a href="{{ url_for('cambiamento_commenti', id = commento.id)}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></a></button>
+                    {% endif %}
+                    {% endif %}
+                </ul>
+                </div>
+                <hr>
+                {% endif %}
+            {% endfor %}
+
+        {% if current_user.is_authenticated %}
+        <p class="commenti_p" >Commenta anche te e dicci cosa ne pensi!</p>
+        <form class="commenti" action="{{ url_for('singolo', id=episodio['id'])}}", method="POST">
+            <label for="commento"></label> 
+            <input name='commento' type="text" class="form-control"  placeholder="Inserisci un commento">
+            <button id="login_bottone" type="submit" class="btn btn-primary" value="Send data">Inserisci</button>
+        </form>
+        {% else %}
+        <p class="commenti_p" >Esegui il login o la registrazione per commentare anche tu!!</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
+{% endblock %}
+{% block aside %}
+<aside class="sinistra">
+    <h4>FILTRA</h3>
+    <hr></hr>
+    <h6> filtra per CATEGORIA :</h5>
+    <ul>
+        <li><a href="{{ url_for('categoria', k='Fantasy')}}" data-tag="Fantasy">Fantasy</a></li>
+        <li><a href="{{ url_for('categoria', k='Tecnologia')}}" data-tag="Tecnologia">Tecnologia</a></li>
+        <li><a href="{{ url_for('categoria', k='Attualità')}}" data-tag="Attualità">Attualit&agrave;</a></li>
+        <li><a href="{{ url_for('categoria', k='Storia')}}" data-tag="Storia">Storia</a></li>
+      <hr></hr>
+      <button><a href="#s">Elimina filtri</a></button>
+      <hr>
+      <h4> NAVIGA: </h4>   
+      <hr>
+      {%for s in serie_trovate %} 
+      <section> 
+          <h6><a href="{{url_for('serie_singola', id=s.id)}}">{{s.titolo}}</a></h6> 
+          <ul> 
+              {%for p in podcast_trovati%} 
+                  {%if p.serie_titolo == s.id%} 
+                  <li><a href="{{url_for('singolo', id=p.id)}}">{{p.titolo}}</a></li> 
+                  {%endif%} 
+              {%endfor%} 
+          </ul> 
+      </section> 
+      <hr>
+      {%endfor%} 
+</aside>
+{% endblock %}

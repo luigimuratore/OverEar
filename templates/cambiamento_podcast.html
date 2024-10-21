@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Cambiamento podcast{% endblock %}
+{% block main %}
+
+<form action="{{url_for('cambiamento_podcast', id = id)}}" method="POST" id='cambiamenti' class="login_form", enctype="multipart/form-data">
+    <hr>
+    <div class="email">
+        <label for="nuovo_titolo">Titolo precedente: {{ rif['titolo'] }}</label>
+        <input name="nuovo_titolo" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titolo del podcast", minlength="2", maxlength="20">
+    </div>
+    <div class="email">
+        <label for="nuova_descrizione">Descrizione precedente: {{ rif['descrizione']  }}</label>
+        <textarea class="form-control" name="nuova_descrizione"  placeholder="Inserisci una descrizione" rows="5" minlength="10"></textarea>
+    </div>
+    <div class="data">
+        <label for="nuova_data" class="form-label">Data precedente: {{ rif['data'] }}</label>
+        <input type="date" class="form-control" name="nuova_data" aria-describedby="Data dell'articolo", value="YYYY-MM-DD">
+    </div>
+    <div class="email">
+        <label for="nuovo_audio" class="form-label">Scegli il file audio del podcast oppure non inserire niente per mantere quello precedente</label>
+        <input name="nuovo_audio" class="form-control" type="file" id="formFile", accept=".mp3, .ogg">
+    </div>
+    <div class="robot">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1", required>
+      <label class="form-check-label" for="exampleCheck1">Accetto i termini e le condizioni.</label>
+    </div>
+    <button id="login_bottone" type="submit" class="btn btn-primary" value="Send data">Inserisci</button>
+</form>
+{% endblock %}

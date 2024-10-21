@@ -1,0 +1,15 @@
+Istruzioni
+
+UTENTE 1 : CREATORE
+Email:     gigiomuratore@gmail.com
+Passwd:   luigiluigi
+
+UTENTE 2 : ASCOLTATORE
+Email:   giogegge@gmail.com
+Passwd:   giogiogio
+
+UTENTE 3 : CREATORE
+Email:  mm@mm
+Passwd:  mmmmmmmm
+
+

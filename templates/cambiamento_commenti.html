@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Cambiamento commenti{% endblock %}
+{% block main %}
+<main class="cambiamento_commenti">
+    <form class="commenti" action="{{ url_for('cambiamento_commenti', id=id)}}", method="POST">
+        <label for="nuovo_commento">Commento precedente:  {{ commento_trovato['contenuto'] }}</label> 
+        <input name='nuovo_commento' type="text" class="form-control"  placeholder="Inserisci un commento nuovo">
+        <button id="login_bottone" type="submit" class="btn btn-primary" value="Send data">Inserisci</button>
+    </form>
+</main>
+{% endblock %}

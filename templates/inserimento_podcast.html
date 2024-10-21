@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Nuovo podcast{% endblock %}
+{% block main %}
+<form action="/inserimento_podcast" method="POST" class="login_form", enctype="multipart/form-data">
+    <hr>
+    <div class="email">
+        <label for="titolo">Titolo</label>
+        <input name="titolo" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titolo del podcast", required, minlength="2", maxlength="20">
+    </div>
+    <div class="email">
+        <label for="descrizione">Descrizione</label>
+        <textarea class="form-control" name="descrizione"  placeholder="Inserisci una descrizione" rows="5" required minlength="10", required></textarea>
+    </div>
+    <div class="data">
+        <label for="data" class="form-label">Data</label>
+        <input type="date" class="form-control" name="data" aria-describedby="Data dell'articolo", required, value="YYYY-MM-DD">
+    </div>
+    <div>
+        <label class='select' for="serie_titolo">Vuoi inserire il podcast in una serie esistente?</label>
+        <select name="serie_titolo" id="email" class="form-select" aria-label="Default select example", required>
+            <option selected value="">Nessuna serie selezionata!</option>
+            {% for i in titoli_serie %}
+                {% if i.autore == current_user.nome %}
+                    <option value={{ i.titolo.replace(" ", "ç") }}>{{ i.titolo }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div class="email">
+        <label for="audio" class="form-label">Scegli il file audio del podcast</label>
+        <input name="audio" class="form-control" type="file" id="formFile", accept=".mp3, .ogg">
+    </div>
+    <div class="link">
+        <a>Vuoi creare una serie prima di inserire un podcast??    </a><a  href="{{ url_for ('inserimento_serie')}}">Inserisci una serie</a></li>
+    </div>
+    <div class="robot">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1", required>
+      <label class="form-check-label" for="exampleCheck1">Accetto i termini e le condizioni.</label>
+    </div>
+    <button id="login_bottone" type="submit" class="btn btn-primary" value="Send data">Inserisci</button>
+</form>
+{% endblock %}
